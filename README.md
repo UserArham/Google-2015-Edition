@@ -26,7 +26,7 @@ It mimics the classic look of Google from 2010, including the serif-style logo, 
 1. Clone or download this repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/google-2010-clone.git
+git clone https://github.com/UserArham/Google-2013-Edition.git
 ```
 Test using:
 ``` bash
