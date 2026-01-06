@@ -40,3 +40,7 @@ google-2010-clone/
 ├── style.css        # (Optional) Separate CSS file if extracted
 ├── script.js        # (Optional) Separate JS file if extracted
 └── README.md        # This file
+```
+> This only runs when going to the ZIP or a Vercel web.
+# Example of the Google website:
+<img width="1361" height="697" alt="Screenshot 2026-01-05 10 08 35 PM" src="https://github.com/user-attachments/assets/4db747c1-84e3-49d0-88e0-9e0f49b26e28" />
