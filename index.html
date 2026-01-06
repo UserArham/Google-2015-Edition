@@ -5,7 +5,6 @@
   <title>Google</title>
 
   <style>
-    /* ===== Base ===== */
     body {
       margin: 0;
       height: 100vh;
@@ -14,7 +13,6 @@
       color: #222;
     }
 
-    /* ===== Center Layout ===== */
     .container {
       display: flex;
       flex-direction: column;
@@ -22,7 +20,7 @@
       margin-top: 160px;
     }
 
-    /* ===== Google Logo (2010) ===== */
+    /* Logo (2010) */
     .logo {
       font-family: "Times New Roman", Georgia, serif;
       font-size: 94px;
@@ -37,7 +35,7 @@
     .yellow { color: #ff9900; }
     .green  { color: #109618; }
 
-    /* ===== Search Box ===== */
+    /* Search box */
     .search-box {
       width: 480px;
       height: 34px;
@@ -47,16 +45,12 @@
       border-radius: 1px;
     }
 
-    .search-box:hover {
-      border-color: #bfbfbf;
-    }
-
     .search-box:focus {
       outline: none;
       border-color: #4d90fe;
     }
 
-    /* ===== Buttons ===== */
+    /* Buttons */
     .buttons {
       margin-top: 22px;
     }
@@ -77,11 +71,7 @@
       border-color: #c6c6c6;
     }
 
-    button:active {
-      background: #eeeeee;
-    }
-
-    /* ===== Footer ===== */
+    /* Footer */
     footer {
       position: fixed;
       bottom: 0;
@@ -95,23 +85,9 @@
       gap: 22px;
     }
 
-    footer span {
-      cursor: pointer;
-    }
-
     footer span:hover {
       text-decoration: underline;
-    }
-
-    /* ===== Responsive ===== */
-    @media (max-width: 600px) {
-      .search-box {
-        width: 90%;
-      }
-
-      .logo {
-        font-size: 70px;
-      }
+      cursor: pointer;
     }
   </style>
 </head>
@@ -128,11 +104,16 @@
       <span class="red">e</span>
     </div>
 
-    <input type="text" class="search-box">
+    <input
+      type="text"
+      class="search-box"
+      id="searchInput"
+      autofocus
+    >
 
     <div class="buttons">
-      <button>Google Search</button>
-      <button>I’m Feeling Lucky</button>
+      <button onclick="googleSearch()">Google Search</button>
+      <button onclick="feelingLucky()">I’m Feeling Lucky</button>
     </div>
   </div>
 
@@ -141,6 +122,37 @@
     <span>Business</span>
     <span>About</span>
   </footer>
+
+  <!-- ===== JavaScript ===== -->
+  <script>
+    const input = document.getElementById("searchInput");
+
+    // Press Enter to search
+    input.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        googleSearch();
+      }
+    });
+
+    function googleSearch() {
+      const query = input.value.trim();
+      if (query !== "") {
+        window.location.href =
+          "https://www.google.com/search?q=" +
+          encodeURIComponent(query);
+      }
+    }
+
+    function feelingLucky() {
+      const query = input.value.trim();
+      if (query !== "") {
+        window.location.href =
+          "https://www.google.com/search?q=" +
+          encodeURIComponent(query) +
+          "&btnI=1";
+      }
+    }
+  </script>
 
 </body>
 </html>
