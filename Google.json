@@ -1,0 +1,14 @@
+{
+  "site": "Google",
+  "year": 2013,
+  "logo": "google-logo.png",
+  "links": {
+    "gmail": "https://mail.google.com",
+    "images": "https://www.google.com/imghp",
+    "advertising": "https://ads.google.com",
+    "business": "https://www.google.com/services/",
+    "about": "https://about.google/"
+  },
+  "appsIcon": "9d83c89d-f600-47cd-95f7-db869c8f9eea.png",
+  "userAvatar": "https://www.w3schools.com/howto/img_avatar.png"
+}
