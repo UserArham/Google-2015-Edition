@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Google</title>
+
+  <style>
+    /* ===== Base ===== */
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #ffffff;
+      font-family: Arial, sans-serif;
+      color: #222;
+    }
+
+    /* ===== Center Layout ===== */
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 170px;
+    }
+
+    /* ===== Classic Google Logo (1999–2013) ===== */
+    .logo {
+      font-family: "Times New Roman", Georgia, serif;
+      font-size: 96px;
+      font-weight: bold;
+      letter-spacing: -2px;
+      margin-bottom: 26px;
+      text-shadow:
+        1px 1px 0 #cfcfcf,
+        2px 2px 0 #e6e6e6;
+    }
+
+    .blue { color: #4285F4; }
+    .red { color: #DB4437; }
+    .yellow { color: #F4B400; }
+    .green { color: #0F9D58; }
+
+    /* ===== Search Box ===== */
+    .search-box {
+      width: 500px;
+      height: 38px;
+      font-size: 16px;
+      padding: 0 12px;
+      border-radius: 2px;
+      border: 1px solid #dcdcdc;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+      transition: box-shadow 0.2s, border 0.2s;
+    }
+
+    .search-box:hover {
+      border-color: #bdbdbd;
+    }
+
+    .search-box:focus {
+      outline: none;
+      border-color: #4285F4;
+      box-shadow: 0 1px 6px rgba(32,33,36,0.28);
+    }
+
+    /* ===== Buttons ===== */
+    .buttons {
+      margin-top: 26px;
+    }
+
+    button {
+      background: linear-gradient(#f8f8f8, #f1f1f1);
+      border: 1px solid #dcdcdc;
+      border-radius: 2px;
+      color: #444;
+      font-size: 13px;
+      padding: 9px 16px;
+      margin: 0 6px;
+      cursor: pointer;
+      transition: all 0.15s ease-in-out;
+    }
+
+    button:hover {
+      border-color: #c6c6c6;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+      color: #222;
+    }
+
+    button:active {
+      background: #eeeeee;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #f2f2f2;
+      border-top: 1px solid #e4e4e4;
+      font-size: 13px;
+      color: #666;
+      padding: 10px 24px;
+      display: flex;
+      gap: 24px;
+    }
+
+    footer span {
+      cursor: pointer;
+    }
+
+    footer span:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== Small Screens ===== */
+    @media (max-width: 600px) {
+      .search-box {
+        width: 90%;
+      }
+
+      .logo {
+        font-size: 72px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="logo">
+      <span class="blue">G</span>
+      <span class="red">o</span>
+      <span class="yellow">o</span>
+      <span class="blue">g</span>
+      <span class="green">l</span>
+      <span class="red">e</span>
+    </div>
+
+    <input class="search-box" type="text">
+
+    <div class="buttons">
+      <button>Google Search</button>
+      <button>I’m Feeling Lucky</button>
+    </div>
+  </div>
+
+  <footer>
+    <span>Advertising</span>
+    <span>Business</span>
+    <span>About</span>
+  </footer>
+
+</body>
+</html>
