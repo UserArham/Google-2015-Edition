@@ -60,6 +60,7 @@
     background-color: rgba(0,0,0,0.6); 
   }
   .modal-content {
+    display: none; /* hidden by default */
     background-color: #fff; 
     margin: 100px auto; 
     padding: 30px; 
@@ -67,6 +68,9 @@
     text-align: center; 
     border-radius: 2px; 
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  }
+  .modal-content.active {
+    display: block;
   }
   .modal-content img { width: 120px; margin-bottom: 20px; }
   .modal-content input { width: 90%; padding: 8px; margin: 10px 0; font-size: 14px; }
@@ -114,7 +118,7 @@
   <div class="modal-content" id="modalStep1">
     <img src="images/google-logo.png">
     <h2>Sign in</h2>
-    <input type="email" id="emailInput" placeholder="Email or phone">
+    <input type="email" id="emailInput" placeholder="Email or phone" autocomplete="off">
     <div>
       <button id="nextBtn">Next</button>
       <button id="backBtn1">Back</button>
@@ -122,10 +126,10 @@
   </div>
 
   <!-- Step 2: Password -->
-  <div class="modal-content" id="modalStep2" style="display:none;">
+  <div class="modal-content" id="modalStep2">
     <img src="images/google-logo.png">
     <h2>Enter your password</h2>
-    <input type="password" id="passwordInput" placeholder="Password">
+    <input type="password" id="passwordInput" placeholder="Password" autocomplete="off">
     <div>
       <button id="signinFinalBtn">Sign in</button>
       <button id="backBtn2">Back</button>
@@ -133,7 +137,7 @@
   </div>
 
   <!-- Step 3: Signed in -->
-  <div class="modal-content" id="modalStep3" style="display:none;">
+  <div class="modal-content" id="modalStep3">
     <h2>Welcome!</h2>
     <p>You are now signed in.</p>
     <button id="closeModalBtn">Close</button>
@@ -172,23 +176,23 @@
   // Sign-in modal
   signinBtn.onclick = () => {
     modal.style.display = "block";
-    document.getElementById("modalStep1").style.display = "block";
-    document.getElementById("modalStep2").style.display = "none";
-    document.getElementById("modalStep3").style.display = "none";
+    document.getElementById("modalStep1").classList.add("active");
+    document.getElementById("modalStep2").classList.remove("active");
+    document.getElementById("modalStep3").classList.remove("active");
   };
 
   nextBtn.onclick = () => {
     const email = document.getElementById("emailInput").value.trim();
     if(email === "") { alert("Please enter email"); return; }
-    document.getElementById("modalStep1").style.display = "none";
-    document.getElementById("modalStep2").style.display = "block";
+    document.getElementById("modalStep1").classList.remove("active");
+    document.getElementById("modalStep2").classList.add("active");
   };
 
   signinFinalBtn.onclick = () => {
     const password = document.getElementById("passwordInput").value.trim();
     if(password === "") { alert("Please enter password"); return; }
-    document.getElementById("modalStep2").style.display = "none";
-    document.getElementById("modalStep3").style.display = "block";
+    document.getElementById("modalStep2").classList.remove("active");
+    document.getElementById("modalStep3").classList.add("active");
   };
 
   closeModalBtn.onclick = () => { modal.style.display = "none"; };
@@ -196,8 +200,8 @@
   // Back buttons
   backBtn1.onclick = () => { modal.style.display = "none"; }; // back to homepage
   backBtn2.onclick = () => {
-    document.getElementById("modalStep2").style.display = "none";
-    document.getElementById("modalStep1").style.display = "block";
+    document.getElementById("modalStep2").classList.remove("active");
+    document.getElementById("modalStep1").classList.add("active");
   };
 
   // Close modal on clicking outside content
