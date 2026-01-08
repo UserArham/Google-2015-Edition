@@ -1,223 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Google</title>
-  <link href="icon/favicon (9).ico" rel="icon" type="image/x-icon" />
-  <style>
-    body {
-      margin: 0;
-      background: white;
-      font-family: Arial, Helvetica, sans-serif;
-      color: #222;
-      min-height: 100vh;
-    }
+<meta charset="UTF-8">
+<title>Google</title>
+<link href="icon/favicon (9).ico" rel="icon" type="image/x-icon">
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fff;
+    color: #222;
+  }
 
-    /* Top black bar */
-    .topbar {
-      background-color: #222;
-      color: #ccc;
-      font-size: 13px;
-      font-family: Arial, Helvetica, sans-serif;
-      padding: 7px 15px 6px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      user-select: none;
-    }
+  /* Top bar */
+  .topbar {
+    background-color: #222;
+    color: #ccc;
+    font-size: 13px;
+    padding: 7px 15px 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .topbar-left a, .topbar-right a {
+    color: #ccc;
+    text-decoration: none;
+    margin-right: 12px;
+    cursor: pointer;
+  }
+  .topbar-left a.active { font-weight: bold; color: white; }
+  .topbar-left a:hover, .topbar-right a:hover { text-decoration: underline; }
 
-    .topbar-left a, .topbar-right a {
-      color: #ccc;
-      text-decoration: none;
-      margin-right: 12px;
-    }
+  /* Container */
+  .container {
+    text-align: center;
+    margin-top: 120px;
+  }
+  .logo { width: 272px; margin-bottom: 20px; }
 
-    .topbar-left a.active {
-      font-weight: bold;
-      color: white;
-    }
+  /* Search */
+  .search-box { width: 520px; height: 26px; padding: 0 8px; font-size: 16px; border: 1px solid #d9d9d9; border-radius: 2px; }
+  .search-box:focus { outline: none; border-color: #4d90fe; box-shadow: 0 0 6px #4d90fe; }
 
-    .topbar-left a:hover, .topbar-right a:hover {
-      text-decoration: underline;
-    }
+  .buttons { margin-top: 20px; }
+  button { font-size: 13px; padding: 6px 12px; margin: 0 4px; border: 1px solid #dcdcdc; border-radius: 2px; background-color: #f5f5f5; cursor: pointer; }
+  button:hover { background-color: #f8f8f8; border-color: #c6c6c6; }
 
-    .topbar-right {
-      font-size: 13px;
-    }
+  /* Footer */
+  footer { margin-top: 100px; font-size: 12px; text-align: center; color: #666; }
+  footer a { color: #6666cc; text-decoration: none; margin: 0 10px; }
+  footer a:hover { text-decoration: underline; }
 
-    .topbar-right a:last-child {
-      margin-right: 0;
-    }
+  /* Sign-in modal */
+  .modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0; top: 0; width: 100%; height: 100%; 
+    background-color: rgba(0,0,0,0.6); 
+  }
+  .modal-content {
+    background-color: #fff; 
+    margin: 100px auto; 
+    padding: 30px; 
+    width: 360px; 
+    text-align: center; 
+    border-radius: 2px; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  }
+  .modal-content img { width: 120px; margin-bottom: 20px; }
+  .modal-content input { width: 90%; padding: 8px; margin: 10px 0; font-size: 14px; }
+  .modal-content h2 { margin: 0 0 15px; font-size: 20px; font-weight: normal; }
+  .modal-content button { width: 45%; margin: 5px; }
 
-    /* Main container */
-    .container {
-      text-align: center;
-      margin-top: 120px;
-      padding: 0 20px;
-    }
-
-    .logo {
-      width: 272px;
-      height: auto;
-      margin-bottom: 20px;
-    }
-
-    /* Search form */
-    .search-wrapper {
-      display: inline-block;
-      position: relative;
-      text-align: left;
-    }
-
-    input.search-box {
-      width: 520px;
-      height: 26px;
-      font-size: 16px;
-      padding: 0 8px;
-      border: 1px solid #d9d9d9;
-      border-radius: 2px;
-    }
-
-    input.search-box:focus {
-      outline: none;
-      border-color: #4d90fe;
-      box-shadow: 0 0 6px #4d90fe;
-    }
-
-    /* Advanced search and language tools */
-    .links-right {
-      font-size: 12px;
-      color: #6666cc;
-      margin-top: 3px;
-      text-align: right;
-      width: 520px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .links-right a {
-      color: #6666cc;
-      text-decoration: none;
-      margin-left: 12px;
-    }
-
-    .links-right a:hover {
-      text-decoration: underline;
-    }
-
-    /* Buttons below search */
-    .buttons {
-      margin-top: 20px;
-    }
-
-    button {
-      font-size: 13px;
-      padding: 6px 12px;
-      margin: 0 4px;
-      border: 1px solid #dcdcdc;
-      border-radius: 2px;
-      background-color: #f5f5f5;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #f8f8f8;
-      border-color: #c6c6c6;
-    }
-
-    /* Footer */
-    footer {
-      margin-top: 100px;
-      font-size: 12px;
-      text-align: center;
-      color: #666;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    footer a {
-      color: #6666cc;
-      text-decoration: none;
-      margin: 0 10px;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
+</style>
 </head>
 <body>
 
-  <!-- Top bar -->
-  <div class="topbar">
-    <div class="topbar-left">
-      <a href="#" class="active">Search</a>
-      <a href="https://www.google.com/imghp" target="_blank" rel="noopener">Images</a>
-      <a href="https://maps.google.com" target="_blank" rel="noopener">Maps</a>
-      <a href="https://play.google.com" target="_blank" rel="noopener">Play</a>
-      <a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube</a>
-      <a href="https://news.google.com" target="_blank" rel="noopener">News</a>
-      <a href="https://mail.google.com" target="_blank" rel="noopener">Gmail</a>
-      <a href="https://drive.google.com" target="_blank" rel="noopener">Documents</a>
-      <a href="#" title="More">More ▾</a>
-    </div>
-    <div class="topbar-right">
-      <a href="#">Sign in</a>
-      <a href="#" title="Settings">
-        <img src="settings.png" alt="Settings" width="14" style="vertical-align: middle;">
-      </a>
+<!-- Top bar -->
+<div class="topbar">
+  <div class="topbar-left">
+    <a href="#" class="active">Search</a>
+    <a href="https://www.google.com/imghp" target="_blank" rel="noopener">Images</a>
+    <a href="https://maps.google.com" target="_blank" rel="noopener">Maps</a>
+    <a href="https://play.google.com" target="_blank" rel="noopener">Play</a>
+    <a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://news.google.com" target="_blank" rel="noopener">News</a>
+    <a id="signinBtn">Sign in</a>
+  </div>
+</div>
+
+<!-- Main container -->
+<div class="container">
+  <img src="images/google-logo.png" class="logo">
+  <input type="text" class="search-box" id="searchInput" placeholder="Search Google or type a URL">
+  <div class="buttons">
+    <button id="searchBtn">Google Search</button>
+    <button id="luckyBtn">I'm Feeling Lucky</button>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <a href="https://ads.google.com" target="_blank" rel="noopener">Advertising Programs</a>
+  <a href="https://www.google.com/services/" target="_blank" rel="noopener">Business Solutions</a>
+  <a href="https://about.google/" target="_blank" rel="noopener">About Google</a>
+  <br>© 2011 Google
+</footer>
+
+<!-- Sign-in Modal -->
+<div id="signinModal" class="modal">
+  <!-- Step 1: Email -->
+  <div class="modal-content" id="modalStep1">
+    <img src="images/google-logo.png">
+    <h2>Sign in</h2>
+    <input type="email" id="emailInput" placeholder="Email or phone">
+    <div>
+      <button id="nextBtn">Next</button>
+      <button id="backBtn1">Back</button>
     </div>
   </div>
 
-  <!-- Main container -->
-  <div class="container">
-    <img src="images/google-logo.png" alt="Google Logo" class="logo" />
-
-    <div class="search-wrapper">
-      <input type="text" class="search-box" id="searchInput" placeholder="Search Google or type a URL" autofocus />
-      <div class="links-right">
-        <a href="https://www.google.com/advanced_search" target="_blank" rel="noopener">Advanced search</a>
-        <a href="https://www.google.com/language_tools" target="_blank" rel="noopener">Language tools</a>
-      </div>
-    </div>
-
-    <div class="buttons">
-      <button id="searchBtn">Google Search</button>
-      <button id="luckyBtn">I'm Feeling Lucky</button>
+  <!-- Step 2: Password -->
+  <div class="modal-content" id="modalStep2" style="display:none;">
+    <img src="images/google-logo.png">
+    <h2>Enter your password</h2>
+    <input type="password" id="passwordInput" placeholder="Password">
+    <div>
+      <button id="signinFinalBtn">Sign in</button>
+      <button id="backBtn2">Back</button>
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer>
-    <a href="https://ads.google.com" target="_blank" rel="noopener">Advertising Programs</a>
-    <a href="https://www.google.com/services/" target="_blank" rel="noopener">Business Solutions</a>
-    <a href="https://plus.google.com" target="_blank" rel="noopener">+Google</a>
-    <a href="https://about.google/" target="_blank" rel="noopener">About Google</a>
-    <br />
-    © 2011 Google
-  </footer>
+  <!-- Step 3: Signed in -->
+  <div class="modal-content" id="modalStep3" style="display:none;">
+    <h2>Welcome!</h2>
+    <p>You are now signed in.</p>
+    <button id="closeModalBtn">Close</button>
+  </div>
+</div>
 
-  <script>
-    const input = document.getElementById("searchInput");
-    const searchBtn = document.getElementById("searchBtn");
-    const luckyBtn = document.getElementById("luckyBtn");
+<script>
+  const input = document.getElementById("searchInput");
+  const searchBtn = document.getElementById("searchBtn");
+  const luckyBtn = document.getElementById("luckyBtn");
+  const modal = document.getElementById("signinModal");
+  const signinBtn = document.getElementById("signinBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const signinFinalBtn = document.getElementById("signinFinalBtn");
+  const closeModalBtn = document.getElementById("closeModalBtn");
+  const backBtn1 = document.getElementById("backBtn1");
+  const backBtn2 = document.getElementById("backBtn2");
 
-    function googleSearch() {
-      const query = input.value.trim();
-      if (!query) return;
-      window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(query);
-    }
+  // Search functions
+  function googleSearch() {
+    const query = input.value.trim();
+    if (!query) return;
+    window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(query);
+  }
 
-    function feelingLucky() {
-      const query = input.value.trim();
-      if (!query) return;
-      window.location.href = "https://www.google.com/search?btnI=1&q=" + encodeURIComponent(query);
-    }
+  function feelingLucky() {
+    const query = input.value.trim();
+    if (!query) return;
+    window.location.href = "https://www.google.com/search?btnI=1&q=" + encodeURIComponent(query);
+  }
 
-    searchBtn.onclick = googleSearch;
-    luckyBtn.onclick = feelingLucky;
-    input.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") googleSearch();
-    });
-  </script>
+  input.addEventListener("keydown", e => { if(e.key === "Enter") googleSearch(); });
+  searchBtn.onclick = googleSearch;
+  luckyBtn.onclick = feelingLucky;
+
+  // Sign-in modal
+  signinBtn.onclick = () => {
+    modal.style.display = "block";
+    document.getElementById("modalStep1").style.display = "block";
+    document.getElementById("modalStep2").style.display = "none";
+    document.getElementById("modalStep3").style.display = "none";
+  };
+
+  nextBtn.onclick = () => {
+    const email = document.getElementById("emailInput").value.trim();
+    if(email === "") { alert("Please enter email"); return; }
+    document.getElementById("modalStep1").style.display = "none";
+    document.getElementById("modalStep2").style.display = "block";
+  };
+
+  signinFinalBtn.onclick = () => {
+    const password = document.getElementById("passwordInput").value.trim();
+    if(password === "") { alert("Please enter password"); return; }
+    document.getElementById("modalStep2").style.display = "none";
+    document.getElementById("modalStep3").style.display = "block";
+  };
+
+  closeModalBtn.onclick = () => { modal.style.display = "none"; };
+
+  // Back buttons
+  backBtn1.onclick = () => { modal.style.display = "none"; }; // back to homepage
+  backBtn2.onclick = () => {
+    document.getElementById("modalStep2").style.display = "none";
+    document.getElementById("modalStep1").style.display = "block";
+  };
+
+  // Close modal on clicking outside content
+  window.onclick = function(event) {
+    if(event.target == modal) modal.style.display = "none";
+  };
+</script>
+
 </body>
 </html>
