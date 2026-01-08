@@ -76,7 +76,7 @@
   .modal-content.active { display: block; }
   .modal-content img { width: 120px; margin-bottom: 20px; }
   .modal-content input { width: 90%; padding: 8px; margin: 10px 0; font-size: 14px; }
-  .modal-content h2 { margin: 0 0 15px; font-size: 20px; font-weight: normal; }
+  .modal-content h2 { margin: 0 0 15px; font-weight: normal; }
   .modal-content button { width: 45%; margin: 5px; }
 
 </style>
@@ -98,8 +98,8 @@
 
 <!-- Main container -->
 <div class="container">
-  <img src="images/google-logo.png" class="logo">
-  <input type="text" class="search-box" id="searchInput" placeholder="Search Google or type a URL">
+  <img src="images/google-logo.png" class="logo" alt="Google Logo">
+  <input type="text" class="search-box" id="searchInput" placeholder="Search Google or type a URL" autocomplete="off" />
   <div class="buttons">
     <button id="searchBtn">Google Search</button>
     <button id="luckyBtn">I'm Feeling Lucky</button>
@@ -114,10 +114,10 @@
   <br>© 2011 Google
 </footer>
 
-<!-- Sign-in Modal (moved outside container) -->
+<!-- Sign-in Modal (outside container) -->
 <div id="signinModal" class="modal">
   <div class="modal-content" id="modalStep1">
-    <img src="images/google-logo.png">
+    <img src="images/google-logo.png" alt="Google Logo">
     <h2>Sign in</h2>
     <input type="email" id="emailInput" placeholder="Email or phone" autocomplete="off">
     <div>
@@ -127,7 +127,7 @@
   </div>
 
   <div class="modal-content" id="modalStep2">
-    <img src="images/google-logo.png">
+    <img src="images/google-logo.png" alt="Google Logo">
     <h2>Enter your password</h2>
     <input type="password" id="passwordInput" placeholder="Password" autocomplete="off">
     <div>
