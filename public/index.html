@@ -145,6 +145,14 @@ footer a{color:var(--link);text-decoration:none;margin:0 10px}
   display: flex;
 }
 
+.notification .close-btn {
+  margin-left: 15px;
+  font-size: 18px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+}
+
 </style>
 </head>
 
@@ -207,24 +215,29 @@ footer a{color:var(--link);text-decoration:none;margin:0 10px}
 <div id="chromeNotification" class="notification">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Chrome_icon_%28September_2014%29.svg/960px-Google_Chrome_icon_%28September_2014%29.svg.png" alt="Chrome logo">
   <span>Get a better browsing experience! <a href="https://www.google.com/chrome/" target="_blank">Download Google Chrome</a></span>
+  <span class="close-btn" onclick="closeNotification()">✖</span>
 </div>
 
 <script>
 // Show notification after clicking search button or submitting the form
 function showNotification() {
+  document.getElementById('chromeNotification').classList.add('show');
+  
+  // Hide the notification after 10 seconds
   setTimeout(function() {
-    document.getElementById('chromeNotification').classList.add('show');
-  }, 2000); // Show notification after 2 seconds
-
-  const query = document.getElementById('searchInput').value;
-  if (query) {
-    location.href = "https://www.google.com/search?q=" + encodeURIComponent(query);
-  }
+    document.getElementById('chromeNotification').classList.remove('show');
+  }, 10000); // 10 seconds
 }
 
-// Optional: Hide the notification when clicked
-document.getElementById('chromeNotification').addEventListener('click', function() {
-  this.classList.remove('show');
+// Close the notification when the close button is clicked
+function closeNotification() {
+  document.getElementById('chromeNotification').classList.remove('show');
+}
+
+// Optional: Hide the notification when clicked outside the notification box
+document.getElementById('chromeNotification').addEventListener('click', function(e) {
+  if (e.target !== this) return; // Only close if the background (not content) is clicked
+  closeNotification();
 });
 </script>
 
