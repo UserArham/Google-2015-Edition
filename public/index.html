@@ -57,7 +57,12 @@ body{
 /* MAIN */
 .container{margin-top:120px}
 .logo-line{display:flex;justify-content:center;align-items:center;gap:18px;margin-bottom:24px}
-.logo-line img{width:272px}
+.logo-line img{
+  width: 120px; /* Adjust logo width */
+  max-width: 100%; /* Ensure logos scale appropriately */
+  height: auto; /* Keep aspect ratio */
+}
+
 .logo-divider{width:2px;height:60px;background:var(--divider)}
 
 .search-box{
@@ -186,7 +191,7 @@ footer a{color:var(--link);text-decoration:none;margin:0 10px}
     <img src="/google-logo2.png">
     <div class="logo-divider"></div>
     <img src="/Google_logo_(1997-1999).jpg">
-   <div class="logo-divider"></div>
+    <div class="logo-divider"></div>
     <img src="/Google-Logo-1997-1998.webp">
   </div>
 
