@@ -141,16 +141,16 @@ footer a{color:var(--link);text-decoration:none;margin:0 10px}
   text-decoration: underline;
 }
 
-.notification.show {
-  display: flex;
-}
-
 .notification .close-btn {
   margin-left: 15px;
   font-size: 18px;
   cursor: pointer;
   color: white;
   font-weight: bold;
+}
+
+.notification.show {
+  display: flex;
 }
 
 </style>
@@ -215,7 +215,10 @@ footer a{color:var(--link);text-decoration:none;margin:0 10px}
 <div id="chromeNotification" class="notification">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Chrome_icon_%28September_2014%29.svg/960px-Google_Chrome_icon_%28September_2014%29.svg.png" alt="Chrome logo">
   <span>Get a better browsing experience! <a href="https://www.google.com/chrome/" target="_blank">Download Google Chrome</a></span>
-  <span class="close-btn" onclick="closeNotification()">✖</span>
+  <!-- SVG Close Button -->
+  <svg onclick="closeNotification()" xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="white" class="bi bi-x-circle close-btn" viewBox="0 0 16 16">
+    <path d="M11.742 4.258a1 1 0 0 0-1.414 0L8 6.586 5.672 4.258a1 1 0 1 0-1.414 1.414L6.586 8 4.258 10.328a1 1 0 0 0 1.414 1.414L8 9.414l2.328 2.328a1 1 0 1 0 1.414-1.414L9.414 8l2.328-2.328a1 1 0 0 0 0-1.414z"/>
+  </svg>
 </div>
 
 <script>
@@ -233,39 +236,7 @@ function showNotification() {
 function closeNotification() {
   document.getElementById('chromeNotification').classList.remove('show');
 }
-
-// Optional: Hide the notification when clicked outside the notification box
-document.getElementById('chromeNotification').addEventListener('click', function(e) {
-  if (e.target !== this) return; // Only close if the background (not content) is clicked
-  closeNotification();
-});
 </script>
-
-<!-- LOGIN MODAL -->
-<div id="signinModal" class="modal">
-
-  <div class="modal-content active" id="modalStep1">
-    <img src="/google-logo.png" width="120"><br><br>
-    <h2>Verify it is you</h2>
-    <input placeholder="Email or phone">
-    <button id="nextBtn">Next</button>
-  </div>
-
-  <div class="modal-content" id="modalStep2">
-    <img src="/google-logo.png" width="120"><br><br>
-    <h2>Enter password or recovery code</h2>
-    <input type="password" placeholder="Password">
-    <button id="signinFinalBtn">Sign in</button>
-    <button id="backBtn">Back</button>
-  </div>
-
-  <div class="modal-content" id="modalStep3">
-    <h2>You are recovered</h2>
-    <p>Now you won't get locked out.</p>
-    <button id="closeBtn">Exit</button>
-  </div>
-
-</div>
 
 </body>
 </html>
