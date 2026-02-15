@@ -233,7 +233,7 @@ function showNotification() {
   }, 10000); // 10 seconds
 }
 
-// Close the notification when the close button is clicked
+// Attach event listener to close the notification when the close button is clicked
 document.getElementById('closeBtn').addEventListener('click', function() {
   document.getElementById('chromeNotification').classList.remove('show');
 });
