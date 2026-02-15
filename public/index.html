@@ -1,4 +1,4 @@
-]<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -140,9 +140,10 @@ footer a{color:var(--link);text-decoration:none;margin:0 10px}
     <img src="/google-logo3.png">
   </div>
 
-  <form onsubmit="return false;">
+  <!-- Updated form without 'onsubmit' attribute -->
+  <form id="searchForm">
     <input id="searchInput" class="search-box"
-           placeholder="Search Google or type a URL">
+           placeholder="Search Google or type a URL" type="text">
   </form>
 
   <div class="buttons">
@@ -163,7 +164,7 @@ footer a{color:var(--link);text-decoration:none;margin:0 10px}
   <a href="https://ads.google.com" target="_blank">Advertising Programs</a>
   <a href="https://www.google.com/services/" target="_blank">Business Solutions</a>
   <a href="https://about.google/" target="_blank">About Google</a>
-  <br>© 2015 Google. The 2013–2015 Google logo will be replaced in 1.1 months.
+  <br>© 2015 Google. The 2013–2015 Google logo will be replaced in 3.6 months.
 </footer>
 
 <!-- LOGIN MODAL -->
@@ -194,10 +195,27 @@ footer a{color:var(--link);text-decoration:none;margin:0 10px}
 
 <script>
 /* SEARCH */
-searchBtn.onclick=()=>searchInput.value &&
-(location.href="https://www.google.com/search?q="+encodeURIComponent(searchInput.value));
-luckyBtn.onclick=()=>searchInput.value &&
-(location.href="https://www.google.com/search?btnI=1&q="+encodeURIComponent(searchInput.value));
+document.getElementById('searchForm').onsubmit = function(e) {
+  e.preventDefault();
+  const query = document.getElementById('searchInput').value;
+  if (query) {
+    location.href = "https://www.google.com/search?q=" + encodeURIComponent(query);
+  }
+};
+
+document.getElementById('searchBtn').onclick = function() {
+  const query = document.getElementById('searchInput').value;
+  if (query) {
+    location.href = "https://www.google.com/search?q=" + encodeURIComponent(query);
+  }
+};
+
+document.getElementById('luckyBtn').onclick = function() {
+  const query = document.getElementById('searchInput').value;
+  if (query) {
+    location.href = "https://www.google.com/search?btnI=1&q=" + encodeURIComponent(query);
+  }
+};
 
 /* LOGIN */
 signinBtn.onclick=()=>{
