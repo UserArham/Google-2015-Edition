@@ -109,6 +109,42 @@ footer a{color:var(--link);text-decoration:none;margin:0 10px}
   border:1px solid var(--border);
   font-family:'Roboto', sans-serif; /* Apply Roboto Light to modal inputs */
 }
+
+/* Notification Style for Chrome Download */
+.notification {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4285F4;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 5px;
+  font-size: 16px;
+  display: none;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
+.notification img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.notification a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 10px;
+  text-decoration: underline;
+}
+
+.notification.show {
+  display: flex;
+}
+
 </style>
 </head>
 
@@ -141,14 +177,14 @@ footer a{color:var(--link);text-decoration:none;margin:0 10px}
   </div>
 
   <!-- Updated form without 'onsubmit' attribute -->
-  <form id="searchForm">
+  <form id="searchForm" onsubmit="showNotification();">
     <input id="searchInput" class="search-box"
            placeholder="Search Google or type a URL" type="text">
   </form>
 
   <div class="buttons">
-    <button id="searchBtn">Google Search</button>
-    <button id="luckyBtn">I'm Feeling Lucky</button>
+    <button id="searchBtn" onclick="showNotification();">Google Search</button>
+    <button id="luckyBtn" onclick="showNotification();">I'm Feeling Lucky</button>
   </div>
 
   <div class="video-container">
@@ -166,6 +202,31 @@ footer a{color:var(--link);text-decoration:none;margin:0 10px}
   <a href="https://about.google/" target="_blank">About Google</a>
   <br>© 2015 Google. The 2013–2015 Google logo will be replaced in 3.6 months.
 </footer>
+
+<!-- Notification for Download Google Chrome -->
+<div id="chromeNotification" class="notification">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Chrome_icon_%28September_2014%29.svg/960px-Google_Chrome_icon_%28September_2014%29.svg.png" alt="Chrome logo">
+  <span>Get a better browsing experience! <a href="https://www.google.com/chrome/" target="_blank">Download Google Chrome</a></span>
+</div>
+
+<script>
+// Show notification after clicking search button or submitting the form
+function showNotification() {
+  setTimeout(function() {
+    document.getElementById('chromeNotification').classList.add('show');
+  }, 2000); // Show notification after 2 seconds
+
+  const query = document.getElementById('searchInput').value;
+  if (query) {
+    location.href = "https://www.google.com/search?q=" + encodeURIComponent(query);
+  }
+}
+
+// Optional: Hide the notification when clicked
+document.getElementById('chromeNotification').addEventListener('click', function() {
+  this.classList.remove('show');
+});
+</script>
 
 <!-- LOGIN MODAL -->
 <div id="signinModal" class="modal">
@@ -192,59 +253,6 @@ footer a{color:var(--link);text-decoration:none;margin:0 10px}
   </div>
 
 </div>
-
-<script>
-/* SEARCH */
-document.getElementById('searchForm').onsubmit = function(e) {
-  e.preventDefault();
-  const query = document.getElementById('searchInput').value;
-  if (query) {
-    location.href = "https://www.google.com/search?q=" + encodeURIComponent(query);
-  }
-};
-
-document.getElementById('searchBtn').onclick = function() {
-  const query = document.getElementById('searchInput').value;
-  if (query) {
-    location.href = "https://www.google.com/search?q=" + encodeURIComponent(query);
-  }
-};
-
-document.getElementById('luckyBtn').onclick = function() {
-  const query = document.getElementById('searchInput').value;
-  if (query) {
-    location.href = "https://www.google.com/search?btnI=1&q=" + encodeURIComponent(query);
-  }
-};
-
-/* LOGIN */
-signinBtn.onclick=()=>{
-  signinModal.style.display="block";
-  modalStep1.classList.add("active");
-  modalStep2.classList.remove("active");
-  modalStep3.classList.remove("active");
-};
-nextBtn.onclick=()=>{
-  modalStep1.classList.remove("active");
-  modalStep2.classList.add("active");
-};
-signinFinalBtn.onclick=()=>{
-  modalStep2.classList.remove("active");
-  modalStep3.classList.add("active");
-};
-backBtn.onclick=()=>{
-  modalStep2.classList.remove("active");
-  modalStep1.classList.add("active");
-};
-closeBtn.onclick=()=>signinModal.style.display="none";
-
-/* THEME */
-if(localStorage.theme==="dark")document.documentElement.classList.add("dark");
-themeToggle.onclick=()=>{
-  document.documentElement.classList.toggle("dark");
-  localStorage.theme=document.documentElement.classList.contains("dark")?"dark":"light";
-};
-</script>
 
 </body>
 </html>
