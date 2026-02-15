@@ -166,7 +166,7 @@ footer a{color:var(--link);text-decoration:none;margin:0 10px}
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="topbar-left">
-    <a class="active">Search</a>
+    <a class="active" href="https://www.google.com">Search</a> <!-- Redirect to actual Google -->
     <a href="https://www.google.com/imghp" target="_blank">Images</a>
     <a href="https://maps.google.com" target="_blank">Maps</a>
     <a href="https://play.google.com" target="_blank">Play</a>
@@ -195,15 +195,14 @@ footer a{color:var(--link);text-decoration:none;margin:0 10px}
     <img src="/Google-Logo-1997-1998.webp">
   </div>
 
-  <!-- Updated form without 'onsubmit' attribute -->
-  <form id="searchForm" onsubmit="showNotification();">
-    <input id="searchInput" class="search-box"
-           placeholder="Search Google or type a URL" type="text">
+  <!-- Updated form to redirect to Google search -->
+  <form id="searchForm" action="https://www.google.com/search" method="get"> <!-- Redirect to actual Google search -->
+    <input id="searchInput" class="search-box" placeholder="Search Google or type a URL" type="text" name="q">
   </form>
 
   <div class="buttons">
-    <button id="searchBtn" onclick="showNotification();">Google Search</button>
-    <button id="luckyBtn" onclick="showNotification();">I'm Feeling Lucky</button>
+    <button id="searchBtn" onclick="document.getElementById('searchForm').submit();">Google Search</button> <!-- Submit the form to Google -->
+    <button id="luckyBtn" onclick="document.getElementById('searchForm').submit();">I'm Feeling Lucky</button>
   </div>
 
   <div class="video-container">
@@ -219,7 +218,7 @@ footer a{color:var(--link);text-decoration:none;margin:0 10px}
   <a href="https://ads.google.com" target="_blank">Advertising Programs</a>
   <a href="https://www.google.com/services/" target="_blank">Business Solutions</a>
   <a href="https://about.google/" target="_blank">About Google</a>
-  <br>© 2015 Google (Google anniversary is coming up!)
+  <br>© 2018 Google
 </footer>
 
 <!-- Notification for Download Google Chrome -->
