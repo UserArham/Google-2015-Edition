@@ -37,7 +37,7 @@ This project is a recreation of Google's homepage and sign-in experience as it a
 
 ---
 ## Builds
-Founds some builds like Google 2011, or 2018 like:
+Found some builds like Google 2011, or 2018 like:
 
 - Build 0992: Classic Google only with Times New Roman, boring.
 - Build 1002: Lighthouse score of 94 with a logo, but super BORING...
