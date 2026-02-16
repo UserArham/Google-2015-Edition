@@ -36,9 +36,23 @@ This project is a recreation of Google's homepage and sign-in experience as it a
 - © 2011 Google design recreation.
 
 ---
+## Builds
+Founds some builds like Google 2011, or 2018 like:
 
+- Build 0992: Classic Google only with Times New Roman, boring.
+- Build 1002: Lighthouse score of 94 with a logo, but super BORING...
+- Build 1009: Builds up with now a small classic 2011 clone, even a sign in, but score of 96.
+- Build 1018: Iconicly moves up to 2014 clonings and a perfection of 98 in Lighthouse.
+- Build 1031: For real it was now fully updated to 2015 perfectly. Scored 97, however.
+- Build 1038: Two logos, one 2014 and one 2015 like a difference.
+- Build 1047: Added a small video for updation.
+- Build 1063: A brand new update for the footer saying it go away in a few months.
+- Build 1081: A new Chrome feature that was updated for 2015 new update.
+- Build 1100: The sign in button is broken.
+- Build 1117 (new): Added a few more logos for 2018 and optimized index 3 and 2.
+
+---
 ## Files
-
 `index.html` - Main homepage
 `images/google-logo.png` - Google logo
 `icon/favicon (9).ico` - Favicon
