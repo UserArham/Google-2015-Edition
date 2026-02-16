@@ -54,8 +54,11 @@ Founds some builds like Google 2011, or 2018 like:
 ---
 ## Files
 `index.html` - Main homepage
+
 `images/google-logo.png` - Google logo
+
 `icon/favicon (9).ico` - Favicon
+
 `README.md` - Project documentation
 
 # Credits:
