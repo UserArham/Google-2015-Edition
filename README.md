@@ -49,7 +49,7 @@ Founds some builds like Google 2011, or 2018 like:
 - Build 1063: A brand new update for the footer saying it go away in a few months.
 - Build 1081: A new Chrome feature that was updated for 2015 new update.
 - Build 1100: The sign in button is broken.
-- Build 1117 (new): Added a few more logos for 2018 and optimized index 3 and 2.
+- Build 1117 (new): Added a few more logos for 2018 and optimized index 3 and 2, scored 100.
 
 ---
 ## Files
