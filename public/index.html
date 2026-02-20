@@ -110,6 +110,27 @@
       margin: 0 10px;
     }
 
+    /* Logo Styles */
+    .logo-line {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .logo-line img {
+      width: 190px; /* Control the size of the logo */
+      max-width: 100%; /* Ensure it scales down properly */
+      height: auto; /* Maintain aspect ratio */
+    }
+
+    .logo-divider {
+      width: 2px;
+      height: 60px;
+      background: var(--divider);
+    }
+
     .notification {
       position: fixed;
       bottom: 20px;
@@ -176,6 +197,7 @@
 <!-- MAIN CONTENT -->
 <div class="container">
 
+  <!-- Logo Images -->
   <div class="logo-line">
     <img src="/google-logo.png">
     <div class="logo-divider"></div>
@@ -250,3 +272,4 @@ function feelingLucky() {
 
 </body>
 </html>
+
