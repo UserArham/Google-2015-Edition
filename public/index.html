@@ -28,8 +28,11 @@
       background: var(--bg);
       color: var(--text);
       text-align: center;
+      padding-top: 70px; /* Ensure content is not hidden under the fixed topbar */
+      box-sizing: border-box;
     }
 
+    /* Topbar Styling */
     .topbar {
       background: var(--topbar-bg);
       color: var(--topbar-text);
@@ -54,6 +57,11 @@
     .topbar-left a.active {
       font-weight: bold;
       color: white;
+    }
+
+    /* Main Content */
+    .container {
+      margin-top: 100px; /* Adjusted space to ensure content is below the fixed topbar */
     }
 
     .search-box {
@@ -117,12 +125,13 @@
       align-items: center;
       gap: 18px;
       margin-bottom: 24px;
+      padding-top: 40px; /* Ensure logos have space above */
     }
 
     .logo-line img {
       width: 190px; /* Control the size of the logo */
-      max-width: 100%; /* Ensure it scales down properly */
-      height: auto; /* Maintain aspect ratio */
+      max-width: 100%;
+      height: auto;
     }
 
     .logo-divider {
