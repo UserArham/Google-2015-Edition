@@ -201,7 +201,7 @@ footer a{color:var(--link);text-decoration:none;margin:0 10px}
   </form>
 
   <div class="buttons">
-    <button id="searchBtn" onclick="searchRedirect()">Google Search</button>
+    <button id="searchBtn" onclick="searchRedirect(event)">Google Search</button>
     <button id="luckyBtn" onclick="feelingLucky()">I'm Feeling Lucky</button>
   </div>
 
@@ -233,7 +233,9 @@ footer a{color:var(--link);text-decoration:none;margin:0 10px}
 
 <script>
 // "Google Search" button will redirect to Google Search results
-function searchRedirect() {
+function searchRedirect(event) {
+  event.preventDefault(); // Prevent form submission
+
   const inputText = document.getElementById('searchInput').value.trim();
   if (inputText) {
     window.location.href = `https://www.google.com/search?q=${encodeURIComponent(inputText)}`;
