@@ -166,7 +166,7 @@ footer a{color:var(--link);text-decoration:none;margin:0 10px}
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="topbar-left">
-    <a class="active" href="https://www.google.com">Search</a> <!-- Redirect to actual Google -->
+    <a class="active" href="https://www.google.com">Search</a>
     <a href="https://www.google.com/imghp" target="_blank">Images</a>
     <a href="https://maps.google.com" target="_blank">Maps</a>
     <a href="https://play.google.com" target="_blank">Play</a>
@@ -195,14 +195,14 @@ footer a{color:var(--link);text-decoration:none;margin:0 10px}
     <img src="/Google-Logo-1997-1998.webp">
   </div>
 
-  <!-- Updated form to redirect to Google search -->
-  <form id="searchForm" action="https://www.google.com/search" method="get"> <!-- Redirect to actual Google search -->
-    <input id="searchInput" class="search-box" placeholder="Search Google or type a URL" type="text" name="q">
+  <!-- Search Form -->
+  <form id="searchForm">
+    <input id="searchInput" class="search-box" placeholder="Search Google or type a URL" type="text">
   </form>
 
   <div class="buttons">
-    <button id="searchBtn" onclick="document.getElementById('searchForm').submit();">Google Search</button> <!-- Submit the form to Google -->
-    <button id="luckyBtn" onclick="document.getElementById('searchForm').submit();">I'm Feeling Lucky</button>
+    <button id="searchBtn" onclick="searchRedirect()">Google Search</button>
+    <button id="luckyBtn" onclick="feelingLucky()">I'm Feeling Lucky</button>
   </div>
 
   <div class="video-container">
@@ -226,27 +226,37 @@ footer a{color:var(--link);text-decoration:none;margin:0 10px}
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Chrome_icon_%28September_2014%29.svg/960px-Google_Chrome_icon_%28September_2014%29.svg.png" alt="Chrome logo">
   <span>Get a better browsing experience! <a href="https://www.google.com/chrome/" target="_blank">Download Google Chrome</a></span>
   
-  <!-- SVG Close Button -->
   <svg id="closeBtn" xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="white" class="bi bi-x-circle close-btn" viewBox="0 0 16 16">
     <path d="M11.742 4.258a1 1 0 0 0-1.414 0L8 6.586 5.672 4.258a1 1 0 1 0-1.414 1.414L6.586 8 4.258 10.328a1 1 0 0 0 1.414 1.414L8 9.414l2.328 2.328a1 1 0 1 0 1.414-1.414L9.414 8l2.328-2.328a1 1 0 0 0 0-1.414z"/>
   </svg>
 </div>
 
 <script>
-// Show notification after clicking search button or submitting the form
-function showNotification() {
-  document.getElementById('chromeNotification').classList.add('show');
-  
-  // Hide the notification after 10 seconds
-  setTimeout(function() {
-    document.getElementById('chromeNotification').classList.remove('show');
-  }, 10000); // 10 seconds
+// "Google Search" button will redirect to Google Search results
+function searchRedirect() {
+  const inputText = document.getElementById('searchInput').value.trim();
+  if (inputText) {
+    window.location.href = `https://www.google.com/search?q=${encodeURIComponent(inputText)}`;
+  }
 }
 
-// Attach event listener to close the notification when the close button is clicked
-document.getElementById('closeBtn').addEventListener('click', function() {
-  document.getElementById('chromeNotification').classList.remove('show');
-});
+// "I'm Feeling Lucky" functionality
+function feelingLucky() {
+  const inputText = document.getElementById('searchInput').value.trim().toLowerCase();
+
+  // Check if the input is a valid domain or includes "www" (basic URL detection)
+  const domainRegex = /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,6}(\/.*)?$/;
+
+  if (domainRegex.test(inputText)) {
+    if (!inputText.startsWith('http://') && !inputText.startsWith('https://')) {
+      window.location.href = 'https://' + inputText; // Add https:// if missing
+    } else {
+      window.location.href = inputText;
+    }
+  } else {
+    document.getElementById('searchForm').submit();
+  }
+}
 </script>
 
 </body>
