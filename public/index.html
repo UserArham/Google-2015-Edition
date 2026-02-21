@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="description" content="Google Search Clone">
+  <meta name="keywords" content="Google, Search, Web, Clone">
+  <meta name="author" content="Your Name">
   <title>Google</title>
   <link href="/favicon.ico" rel="icon" type="image/x-icon">
-  <!-- Google Fonts: Roboto Light -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-
   <style>
     :root {
       --bg: #fff;
@@ -221,101 +222,98 @@
     }
   </style>
 </head>
-
 <body>
 
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="topbar-left">
-    <a class="active" href="https://www.google.com">Search</a>
-    <a href="https://www.google.com/imghp" target="_blank">Images</a>
-    <a href="https://maps.google.com" target="_blank">Maps</a>
-    <a href="https://play.google.com" target="_blank">Play</a>
-    <a href="https://www.youtube.com" target="_blank">YouTube</a>
-    <a href="https://news.google.com" target="_blank">News</a>
-    <a href="https://photo.google.com/login" target="_blank">Photos</a>
-    <a href="https://github.com/UserArham/Google-2015-Edition" target="_blank">Github Repo</a>
-    <a href="https://google-plus-gone.vercel.app/" target="_blank">Google+</a>
-    <a id="signinBtn">Sign In (sadly broken)</a>
+    <a href="https://www.google.com" aria-label="Google Search Home" class="active">Search</a>
+    <a href="https://www.google.com/imghp" target="_blank" aria-label="Google Images">Images</a>
+    <a href="https://maps.google.com" target="_blank" aria-label="Google Maps">Maps</a>
+    <a href="https://play.google.com" target="_blank" aria-label="Google Play Store">Play</a>
+    <a href="https://www.youtube.com" target="_blank" aria-label="YouTube">YouTube</a>
+    <a href="https://news.google.com" target="_blank" aria-label="Google News">News</a>
+    <a href="https://photos.google.com" target="_blank" aria-label="Google Photos">Photos</a>
+    <a href="https://github.com/UserArham/Google-2015-Edition" target="_blank" aria-label="GitHub Repository">Github Repo</a>
+    <a href="https://google-plus-gone.vercel.app/" target="_blank" aria-label="Google+ Archive">Google+</a>
+    <a id="signinBtn" aria-label="Sign In">Sign In (sadly broken)</a>
   </div>
-  <div id="themeToggle" class="theme-toggle"></div>
+  <div id="themeToggle" class="theme-toggle" aria-label="Toggle Theme"></div>
 </div>
 
 <!-- MAIN CONTENT -->
 <div class="container">
-
-  <!-- Logo Images -->
   <div class="logo-line">
-    <img src="/google-logo.png">
+    <img src="/google-logo.png" alt="Google Logo 1">
     <div class="logo-divider"></div>
-    <img src="/google-logo3.png">
+    <img src="/google-logo3.png" alt="Google Logo 2">
     <div class="logo-divider"></div>
-    <img src="/google-logo2.png">
+    <img src="/google-logo2.png" alt="Google Logo 3">
     <div class="logo-divider"></div>
-    <img src="/Google_logo_(1997-1999).jpg">
+    <img src="/Google_logo_(1997-1999).jpg" alt="Google Logo 1997-1999">
     <div class="logo-divider"></div>
-    <img src="/Google-Logo-1997-1998.webp">
+    <img src="/Google-Logo-1997-1998.webp" alt="Google Logo 1997-1998">
   </div>
 
-  <!-- Search Input -->
-  <input id="searchInput" class="search-box" placeholder="Search Google or type a URL" type="text">
+  <input id="searchInput" class="search-box" placeholder="Search Google or type a URL" type="text" aria-label="Search Google">
 
   <div class="buttons">
-    <button id="searchBtn" onclick="searchRedirect()">Google Search</button>
-    <button id="luckyBtn" onclick="feelingLucky()">I'm Feeling Lucky</button>
+    <button id="searchBtn" onclick="searchRedirect()" aria-label="Google Search">Google Search</button>
+    <button id="luckyBtn" onclick="feelingLucky()" aria-label="I'm Feeling Lucky">I'm Feeling Lucky</button>
   </div>
 
-  <!-- Video -->
   <div class="video-container">
-    <video controls>
+    <video controls aria-label="Advertising Video">
       <source src="/advertising.mp4" type="video/mp4">
     </video>
   </div>
-
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <a href="https://ads.google.com" target="_blank">Advertising Programs</a>
-  <a href="https://www.google.com/services/" target="_blank">Business Solutions</a>
-  <a href="https://about.google/" target="_blank">About Google</a>
-  <br>©2024 Google
+  <div class="footer-links">
+    <a href="https://ads.google.com" target="_blank" aria-label="Advertising Programs">Advertising Programs</a>
+    <a href="https://www.google.com/services/" target="_blank" aria-label="Business Solutions">Business Solutions</a>
+    <a href="https://about.google/" target="_blank" aria-label="About Google">About Google</a>
+  </div>
+  <div class="copyright">
+    <span>&#169; 2024 Google</span>
+  </div>
 </footer>
 
 <!-- Notification for Download Google Chrome -->
 <div id="chromeNotification" class="notification">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Google_Chrome_icon_%28February_2022%29.svg/960px-Google_Chrome_icon_%28February_2022%29.svg.png" alt="Chrome logo">
-  <span>Get a better browsing experience! <a href="https://www.google.com/chrome/" target="_blank">Download Google Chrome</a></span>
-  
-  <svg id="closeBtn" xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="white" class="bi bi-x-circle close-btn" viewBox="0 0 16 16">
+  <span>Get a better browsing experience! <a href="https://www.google.com/chrome/" target="_blank" aria-label="Download Google Chrome">Download Google Chrome</a></span>
+  <svg id="closeBtn" xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="white" class="bi bi-x-circle close-btn" viewBox="0 0 16 16" aria-label="Close Notification">
     <path d="M11.742 4.258a1 1 0 0 0-1.414 0L8 6.586 5.672 4.258a1 1 0 1 0-1.414 1.414L6.586 8 4.258 10.328a1 1 0 0 0 1.414 1.414L8 9.414l2.328 2.328a1 1 0 1 0 1.414-1.414L9.414 8l2.328-2.328a1 1 0 0 0 0-1.414z"/>
   </svg>
 </div>
 
 <script>
-// Google Search redirect
-function searchRedirect() {
-  const inputText = document.getElementById('searchInput').value.trim();
-  if (inputText) {
-    window.location.href = `https://www.google.com/search?q=${encodeURIComponent(inputText)}`;
-  }
-}
-
-// "I'm Feeling Lucky" functionality
-function feelingLucky() {
-  const inputText = document.getElementById('searchInput').value.trim().toLowerCase();
-  const domainRegex = /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,6}(\/.*)?$/;
-
-  if (domainRegex.test(inputText)) {
-    if (!inputText.startsWith('http://') && !inputText.startsWith('https://')) {
-      window.location.href = 'https://' + inputText;
-    } else {
-      window.location.href = inputText;
+  // Google Search redirect
+  function searchRedirect() {
+    const inputText = document.getElementById('searchInput').value.trim();
+    if (inputText) {
+      window.location.href = `https://www.google.com/search?q=${encodeURIComponent(inputText)}`;
     }
-  } else {
-    window.location.href = `https://www.google.com/search?q=${encodeURIComponent(inputText)}`;
   }
-}
+
+  // "I'm Feeling Lucky" functionality
+  function feelingLucky() {
+    const inputText = document.getElementById('searchInput').value.trim().toLowerCase();
+    const domainRegex = /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,6}(\/.*)?$/;
+
+    if (domainRegex.test(inputText)) {
+      if (!inputText.startsWith('http://') && !inputText.startsWith('https://')) {
+        window.location.href = 'https://' + inputText;
+      } else {
+        window.location.href = inputText;
+      }
+    } else {
+      window.location.href = `https://www.google.com/search?q=${encodeURIComponent(inputText)}`;
+    }
+  }
 </script>
 
 </body>
