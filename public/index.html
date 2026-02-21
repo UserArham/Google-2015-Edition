@@ -2,24 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Google</title>
   <link href="/favicon.ico" rel="icon" type="image/x-icon">
-  <!-- Google Fonts: Roboto Light -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --bg: #fff;
-      --text: #222;
-      --topbar-bg: #222;
-      --topbar-text: #ccc;
-      --border: #d9d9d9;
+      --text: #202124;
+      --topbar-bg: #202124;
+      --topbar-text: #fff;
       --button-bg: #f5f5f5;
       --button-border: #dcdcdc;
-      --footer-text: #666;
-      --link: #6666cc;
-      --modal-bg: #fff;
-      --divider: #dadce0;
+      --sign-in-bg: #1a73e8;
+      --link: #1a73e8;
+      --footer-text: #5f6368;
+      --search-border: #dadce0;
+      --search-focus-border: #4d90fe;
     }
 
     body {
@@ -28,7 +28,6 @@
       background: var(--bg);
       color: var(--text);
       text-align: center;
-      padding-top: 70px; /* Ensure content is not hidden under the fixed topbar */
       box-sizing: border-box;
     }
 
@@ -36,8 +35,8 @@
     .topbar {
       background: var(--topbar-bg);
       color: var(--topbar-text);
-      font-size: 13px;
-      padding: 7px 15px 6px;
+      font-size: 14px;
+      padding: 12px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -50,66 +49,88 @@
     .topbar-left a {
       color: var(--topbar-text);
       text-decoration: none;
-      margin-right: 12px;
+      margin-right: 20px;
       cursor: pointer;
+      font-weight: 500;
     }
 
-    .topbar-left a.active {
-      font-weight: bold;
+    .topbar-left a:hover {
+      text-decoration: underline;
+    }
+
+    .topbar-right a {
+      color: var(--topbar-text);
+      text-decoration: none;
+      margin-left: 20px;
+      padding: 8px 16px;
+      background-color: var(--sign-in-bg);
       color: white;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    .topbar-right a:hover {
+      background-color: #0c5bd2;
+    }
+
+    .apps-menu {
+      display: none;
+      position: absolute;
+      top: 50px;
+      right: 30px;
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      z-index: 1000;
+      width: 200px;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .apps-menu a {
+      display: block;
+      color: var(--text);
+      text-decoration: none;
+      padding: 8px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .apps-menu a:hover {
+      background: #f0f0f0;
+    }
+
+    .apps-menu img {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+      vertical-align: middle;
     }
 
     /* Main Content */
     .container {
-      margin-top: 100px; /* Adjusted space to ensure content is below the fixed topbar */
+      padding-top: 100px;
+      padding-bottom: 100px;
+      text-align: center;
     }
 
-    .search-box {
-      width: 520px;
-      height: 26px;
-      padding: 0 8px;
-      font-size: 16px;
-      border: 1px solid var(--border);
-      background: var(--bg);
-      color: var(--text);
+    /* Logo Styling */
+    .logo-line {
+      margin-bottom: 30px;
     }
 
-    .search-box:focus {
-      outline: none;
-      border-color: #4d90fe;
-      box-shadow: 0 0 6px #4d90fe;
+    .logo-line img {
+      width: 200px; /* Adjust logo size */
+      height: auto;
     }
 
-    .buttons {
-      margin-top: 20px;
-    }
-
-    button {
-      font-size: 13px;
-      padding: 6px 12px;
-      margin: 0 4px;
-      border: 1px solid var(--button-border);
-      background: var(--button-bg);
-      cursor: pointer;
-      color: var(--text);
-    }
-
-    .video-container {
-      margin-top: 40px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .video-container video {
-      width: 560px;
-      max-width: 90%;
-      border-radius: 4px;
-    }
-
+    /* Footer */
     footer {
-      margin-top: 100px;
+      margin-top: 40px;
       font-size: 12px;
       color: var(--footer-text);
+      padding: 20px;
+      background-color: #f2f2f2;
     }
 
     footer a {
@@ -118,166 +139,169 @@
       margin: 0 10px;
     }
 
-    /* Logo Styles */
-    .logo-line {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 18px;
-      margin-bottom: 24px;
-      padding-top: 40px; /* Ensure logos have space above */
-    }
-
-    .logo-line img {
-      width: 190px; /* Control the size of the logo */
-      max-width: 100%;
-      height: auto;
-    }
-
-    .logo-divider {
-      width: 2px;
-      height: 60px;
-      background: var(--divider);
-    }
-
-    .notification {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #4285F4;
-      color: white;
-      padding: 15px 30px;
-      border-radius: 5px;
-      font-size: 16px;
-      display: none;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-    }
-
-    .notification img {
-      width: 30px;
-      height: 30px;
-      margin-right: 10px;
-    }
-
-    .notification a {
-      color: white;
-      font-weight: bold;
-      text-decoration: none;
-      margin-left: 10px;
+    footer a:hover {
       text-decoration: underline;
     }
 
-    .notification .close-btn {
-      margin-left: 15px;
+    /* Search Box */
+    .search-box {
+      width: 560px;
+      height: 44px;
+      padding: 0 15px;
       font-size: 18px;
-      cursor: pointer;
-      color: white;
-      font-weight: bold;
+      border: 1px solid var(--search-border);
+      background: var(--bg);
+      color: var(--text);
+      border-radius: 24px;
+      transition: border 0.3s ease;
     }
 
-    .notification.show {
-      display: flex;
+    .search-box:focus {
+      outline: none;
+      border-color: var(--search-focus-border);
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    button {
+      font-size: 14px;
+      padding: 10px 24px;
+      margin: 0 8px;
+      border: 1px solid var(--button-border);
+      background: var(--button-bg);
+      cursor: pointer;
+      color: var(--text);
+      border-radius: 4px;
     }
   </style>
 </head>
 
 <body>
 
-<!-- TOP BAR -->
-<div class="topbar">
-  <div class="topbar-left">
-    <a class="active" href="https://www.google.com">Search</a>
-    <a href="https://www.google.com/imghp" target="_blank">Images</a>
-    <a href="https://maps.google.com" target="_blank">Maps</a>
-    <a href="https://play.google.com" target="_blank">Play</a>
-    <a href="https://www.youtube.com" target="_blank">YouTube</a>
-    <a href="https://news.google.com" target="_blank">News</a>
-    <a href="https://photo.google.com/login" target="_blank">Photos</a>
-    <a href="https://github.com/UserArham/Google-2015-Edition" target="_blank">Github Repo</a>
-    <a href="https://google-plus-gone.vercel.app/" target="_blank">Google+</a>
-    <a id="signinBtn">Sign In (sadly broken)</a>
-  </div>
-  <div id="themeToggle" class="theme-toggle"></div>
-</div>
-
-<!-- MAIN CONTENT -->
-<div class="container">
-
-  <!-- Logo Images -->
-  <div class="logo-line">
-    <img src="/google-logo.png">
-    <div class="logo-divider"></div>
-    <img src="/google-logo3.png">
-    <div class="logo-divider"></div>
-    <img src="/google-logo2.png">
-    <div class="logo-divider"></div>
-    <img src="/Google_logo_(1997-1999).jpg">
-    <div class="logo-divider"></div>
-    <img src="/Google-Logo-1997-1998.webp">
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="https://www.google.com" class="active">Search</a>
+      <a href="https://www.google.com/imghp" target="_blank">Images</a>
+    </div>
+    <div class="topbar-right">
+      <a href="https://accounts.google.com/SignUp" class="sign-in-btn">Sign In</a>
+      <div class="apps-btn" onclick="toggleAppsMenu()">Apps</div>
+    </div>
   </div>
 
-  <!-- Search Input -->
-  <input id="searchInput" class="search-box" placeholder="Search Google or type a URL" type="text">
-
-  <div class="buttons">
-    <button id="searchBtn" onclick="searchRedirect()">Google Search</button>
-    <button id="luckyBtn" onclick="feelingLucky()">I'm Feeling Lucky</button>
+  <!-- Apps Menu -->
+  <div class="apps-menu" id="appsMenu">
+    <a href="https://mail.google.com" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/1280px-Gmail_icon_%282020%29.svg.png" alt="Gmail Icon">
+      Gmail
+    </a>
+    <a href="https://www.google.com/imghp" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Google_Images_logo.png" alt="Images Icon">
+      Images
+    </a>
+    <a href="https://maps.google.com" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Google_Maps_logo_2022.png" alt="Maps Icon">
+      Maps
+    </a>
+    <a href="https://play.google.com" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Google_Play_Logo.png" alt="Play Icon">
+      Play
+    </a>
+    <a href="https://www.youtube.com" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube Icon">
+      YouTube
+    </a>
+    <a href="https://news.google.com" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Google_News_logo.svg" alt="News Icon">
+      News
+    </a>
+    <a href="https://photos.google.com" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Google_Photos_logo_2020.svg" alt="Photos Icon">
+      Photos
+    </a>
+    <a href="https://keep.google.com" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Google_Keep_icon_%282013-2020%29.png" alt="Google Keep Icon">
+      Google Keep
+    </a>
+    <a href="https://www.google.com/slides" target="_blank">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5zI-bnJi1EIvMaifWo5hu_DJfubgHl2W1WA&s" alt="Google Slides Icon">
+      Google Slides
+    </a>
+    <a href="https://docs.google.com" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Google_Docs_logo.png" alt="Google Docs Icon">
+      Google Docs
+    </a>
+    <a href="https://www.youtube.com" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="Google Vids Icon">
+      Google Vids
+    </a>
   </div>
 
-  <div class="video-container">
-    <video controls>
-      <source src="/advertising.mp4" type="video/mp4">
-    </video>
+  <!-- MAIN CONTENT -->
+  <div class="container">
+
+    <!-- Logo -->
+    <div class="logo-line">
+      <img src="/google-logo.png" alt="Google Logo">
+    </div>
+
+    <!-- Search Box -->
+    <input id="searchInput" class="search-box" placeholder="Search Google or type a URL" type="text">
+
+    <!-- Buttons -->
+    <div class="buttons">
+      <button id="searchBtn" onclick="searchRedirect()">Google Search</button>
+      <button id="luckyBtn" onclick="feelingLucky()">I'm Feeling Lucky</button>
+    </div>
+
   </div>
 
-</div>
+  <!-- FOOTER -->
+  <footer>
+    <a href="https://ads.google.com" target="_blank">Advertising Programs</a>
+    <a href="https://www.google.com/services/" target="_blank">Business Solutions</a>
+    <a href="https://about.google/" target="_blank">About Google</a>
+    <br>©2024 Google
+  </footer>
 
-<!-- FOOTER -->
-<footer>
-  <a href="https://ads.google.com" target="_blank">Advertising Programs</a>
-  <a href="https://www.google.com/services/" target="_blank">Business Solutions</a>
-  <a href="https://about.google/" target="_blank">About Google</a>
-  <br>©2024 Google
-</footer>
-
-<!-- Notification for Download Google Chrome -->
-<div id="chromeNotification" class="notification">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Google_Chrome_icon_%28February_2022%29.svg/960px-Google_Chrome_icon_%28February_2022%29.svg.png" alt="Chrome logo">
-  <span>Get a better browsing experience! <a href="https://www.google.com/chrome/" target="_blank">Download Google Chrome</a></span>
-  
-  <svg id="closeBtn" xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="white" class="bi bi-x-circle close-btn" viewBox="0 0 16 16">
-    <path d="M11.742 4.258a1 1 0 0 0-1.414 0L8 6.586 5.672 4.258a1 1 0 1 0-1.414 1.414L6.586 8 4.258 10.328a1 1 0 0 0 1.414 1.414L8 9.414l2.328 2.328a1 1 0 1 0 1.414-1.414L9.414 8l2.328-2.328a1 1 0 0 0 0-1.414z"/>
-  </svg>
-</div>
-
-<script>
-// Google Search redirect
-function searchRedirect() {
-  const inputText = document.getElementById('searchInput').value.trim();
-  if (inputText) {
-    window.location.href = `https://www.google.com/search?q=${encodeURIComponent(inputText)}`;
-  }
-}
-
-// "I'm Feeling Lucky" functionality
-function feelingLucky() {
-  const inputText = document.getElementById('searchInput').value.trim().toLowerCase();
-  const domainRegex = /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,6}(\/.*)?$/;
-
-  if (domainRegex.test(inputText)) {
-    if (!inputText.startsWith('http://') && !inputText.startsWith('https://')) {
-      window.location.href = 'https://' + inputText; // Add https:// if missing
-    } else {
-      window.location.href = inputText; // Redirect to URL
+  <script>
+    // Toggle the Apps Menu visibility
+    function toggleAppsMenu() {
+      const appsMenu = document.getElementById('appsMenu');
+      if (appsMenu.style.display === 'block') {
+        appsMenu.style.display = 'none';
+      } else {
+        appsMenu.style.display = 'block';
+      }
     }
-  } else {
-    window.location.href = `https://www.google.com/search?q=${encodeURIComponent(inputText)}`;
-  }
-}
-</script>
+
+    // Google Search redirect
+    function searchRedirect() {
+      const inputText = document.getElementById('searchInput').value.trim();
+      if (inputText) {
+        window.location.href = `https://www.google.com/search?q=${encodeURIComponent(inputText)}`;
+      }
+    }
+
+    // "I'm Feeling Lucky" functionality
+    function feelingLucky() {
+      const inputText = document.getElementById('searchInput').value.trim().toLowerCase();
+      const domainRegex = /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,6}(\/.*)?$/;
+
+      if (domainRegex.test(inputText)) {
+        if (!inputText.startsWith('http://') && !inputText.startsWith('https://')) {
+          window.location.href = 'https://' + inputText;
+        } else {
+          window.location.href = inputText;
+        }
+      } else {
+        window.location.href = `https://www.google.com/search?q=${encodeURIComponent(inputText)}`;
+      }
+    }
+  </script>
 
 </body>
 </html>
