@@ -12,7 +12,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 160px;
+  margin-top: 165px;
 }
 
 /* ===== Google Logo (2010) ===== */
@@ -99,7 +99,7 @@ footer span:hover {
 }
 
 /* ===== Responsive ===== */
-@media (max-width: 600px) {
+@media (max-width: 600.5px) {
   .search-box {
     width: 90%;
   }
